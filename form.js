@@ -39,7 +39,7 @@ function validityToType(v) {
   return "other";
 }
 
-// disallowed character regexes (one per field if you like)
+
 const disallowedNameChars = /[^A-Za-z\s'-]/;
 
 function setupIllegalCharGuard(input, disallowedRe, fieldLabel) {
@@ -68,8 +68,6 @@ if (textarea && textarea.maxLength > 0) {
   function updateCount() {
     const remaining = max - textarea.value.length;
     commentsInfo.textContent = `${remaining} characters remaining`;
-    commentsInfo.classList.toggle("warning", remaining <= 30 && remaining >= 0);
-    commentsInfo.classList.toggle("error", remaining < 0);
   }
 
   textarea.addEventListener("input", updateCount);
@@ -88,38 +86,39 @@ form.addEventListener("submit", (event) => {
     if (!field.name) continue;
     if (field.type === "hidden") continue;
 
-    if (!field.validity.patternMismatch){
-    
-    } else{
-           field.setCustomValidity("");
+    field.setCustomValidity(""); 
+
+    // CUSTOM UPPERCASE CHECK
+    if (field.name === "name" && field.validity.patternMismatch) {
+      field.setCustomValidity("Name must begin with an uppercase letter.");
     }
-    
+
+    // check validity
+    const v = field.validity;
 
     if (!field.checkValidity()) {
       hasErrors = true;
 
-      const v = field.validity;
-      const errorType = validityToType(v);
-
-        if (!field.validationMessage || field.validationMessage === "") {
-            if (v.tooShort) {
-                field.setCustomValidity(`${field.name} is too short.`);
-            } else if (v.valueMissing) {
-                field.setCustomValidity(`${field.name} is required.`);
+      // fallback custom messages
+      if (!field.validationMessage) {
+        if (v.valueMissing) {
+          field.setCustomValidity(`${field.name} is required.`);
+        } else if (v.tooShort) {
+          field.setCustomValidity(`${field.name} is too short.`);
         }
-    }
+      }
 
       thisAttemptErrors.push({
         field: field.name,
         value: field.value,
-        errorType,
+        errorType: validityToType(v),
         message: field.validationMessage,
         time: new Date().toISOString(),
       });
     }
   }
 
-if (hasErrors) {
+  if (hasErrors) {
     event.preventDefault();
     showError("Please fix the highlighted fields before submitting.");
     formErrors.push(...thisAttemptErrors);
