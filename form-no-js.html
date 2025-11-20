@@ -5,8 +5,19 @@
   <title>Contact – No JS</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
+
+  <noscript>
+    <p>Theme switching is limited because JavaScript is disabled.</p>
+  </noscript>
+ 
+
 </head>
 <body>
+
+  <button id="theme-toggle" type="button" aria-pressed="false">
+  Toggle theme
+  </button>
+
   <main class="form-page">
     <h1>Contact Stella</h1>
 
@@ -78,6 +89,7 @@
       <button type="submit">Send message</button>
     </form>
   </main>
+  <script src="theme.js" defer></script>
 </body>
 </html>
 

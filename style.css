@@ -662,4 +662,34 @@ input.flash {
   color: #b00020;
 }
 
+/* part 4 */
+:root {
+  --bg: #ffffff;
+  --fg: #111111;
+  --accent: #3498db;
+}
+
+:root[data-theme="dark"] {
+  --bg: #111111;
+  --fg: #f5f5f5;
+  --accent: #f1c40f;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+}
+
+a,
+button {
+  color: var(--accent);
+}
+
+#theme-toggle {
+  border-radius: 999px;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--accent);
+}
+
+
 
