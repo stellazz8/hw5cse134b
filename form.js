@@ -88,7 +88,11 @@ form.addEventListener("submit", (event) => {
     if (!field.name) continue;
     if (field.type === "hidden") continue;
 
-    field.setCustomValidity("");
+    if (!field.validity.patternMismatch){
+    
+    } else{
+           field.setCustomValidity("");
+    }
     
 
     if (!field.checkValidity()) {
@@ -99,9 +103,9 @@ form.addEventListener("submit", (event) => {
 
         if (!field.validationMessage || field.validationMessage === "") {
             if (v.tooShort) {
-            field.setCustomValidity(`${field.name} is too short.`);
-        } else if (v.valueMissing) {
-            field.setCustomValidity(`${field.name} is required.`);
+                field.setCustomValidity(`${field.name} is too short.`);
+            } else if (v.valueMissing) {
+                field.setCustomValidity(`${field.name} is required.`);
         }
     }
 
