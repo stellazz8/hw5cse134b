@@ -27,8 +27,8 @@ semantic styling without extra markup.
 
 body {
   font-family: var(--font-main, sans-serif);
-  color: var(--primary-color, #3366cc);
-  background-color: color(display-p3 0.97 0.96 0.94);
+  color: var(--text-color);
+  background: var(--bg);
   line-height: 1.6;
   padding: 2rem 5%;
 }
@@ -44,7 +44,7 @@ header nav ul {
 
 nav a {
   text-decoration: none;
-  color: var(--primary-color);
+  color: var(--nav-text);
   transition: color 0.3s ease; 
 }
 
@@ -69,7 +69,7 @@ h1 {
 
 
 section {
-  background-color: white;
+  background: var(--card-bg);
   padding: 2rem;
   border-radius: 1rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -151,7 +151,7 @@ section:has(audio), section:has(video) {
 }
 
 .track {
-  background: #f8f8f8;
+  background: var(--track-bg);
   border: 1px solid #ddd;
   border-radius: 12px;
   padding: 12px;
@@ -162,7 +162,6 @@ section:has(audio), section:has(video) {
 
 .track:hover {
   transform: scale(1.03);
-  background: #f0ece6;
 }
 
 .track h3 {
@@ -189,7 +188,7 @@ img {
 
 .inspiration {
   text-align: center;
-  background: #ffffff;
+  background: var(--card-bg);
   padding: 40px 20px;
   border-radius: 16px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.08);
@@ -236,7 +235,7 @@ img {
 }
 
 .about-block {
-  background: #ffffff;
+  background: var(--card-bg);
   border-radius: 18px;
   padding: 25px 30px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
@@ -370,7 +369,7 @@ footer {
     color: #f3f3f3;
   }
   section {
-    background: #333;
+    background: var(--card-bg);
     box-shadow: 0 0 10px rgba(255,255,255,0.1);
   }
   nav ul{
@@ -475,7 +474,7 @@ h2 {
     top: 60px;
     right: 1rem;
     width: 180px;
-    background: var(--primary-color);
+    background: var(--nav-bg);
     border-radius: 10px;
     padding: 1rem;
     list-style: none;
@@ -520,22 +519,8 @@ header {
   z-index: 10;
 }
 
-nav ul {
-  position: absolute;
-  top: 60px;
-  right: 1rem;
-  width: 200px;
-  background: color-mix(in srgb, var(--primary-color) 90%, white);
-  border-radius: 10px;
-  padding: 1rem;
-  list-style: none;
-  text-align: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  z-index: 1000; /* ensures it stays above content */
-}
-
 nav ul li a {
-  color: white;
+  color: var(--nav-text);
   font-weight: 600;
 }
 
@@ -627,19 +612,19 @@ input[required] + .required-indicator::before {
 input:required:user-invalid,
 textarea:required:user-invalid {
   border-color: #b00020;
-  background: #ffecec;
+  background: var(--card-bg);
 }
 
 input:valid,
 textarea:valid {
   border-color: #0b6b4b;
-  background: #f1fff8;
+  background: var(--card-bg);
 }
 
 /* Placeholder-shown if you want subtle style for untouched fields */
 input:placeholder-shown,
 textarea:placeholder-shown {
-  background: #fafafa;
+  background: var(--card-bg);
 
 }
 
@@ -667,16 +652,28 @@ input.flash {
   --bg: #ffffff;
   --card-bg: #f7f7f7;
   --text-color: #000000;
-  --input-bg: #ffffff;
-  --input-text-color: #000000;
+  --heading-color: #222;
+  --nav-bg: #6ba2df;
+  --nav-text: #ffffff;
+  --track-bg: #f8f8f8;
+  --track-hover-bg: #f0ece6;
+  --input-bg: var(--card-bg);
+  --input-text-color: var(--text-color);
+
 }
 
 :root[data-theme="dark"] {
   --bg: #111;
   --card-bg: #2b2b2b;
   --text-color: #ffffff;
-  --input-bg: #ffffff;
-  --input-text-color: #000000;
+  --heading-color: #d9e2ff;
+  --nav-bg: #1e1e1e;
+  --nav-text: #e6e6e6;
+  --track-bg: #333;
+  --track-hover-bg: #404040;
+  --input-bg: var(--card-bg);
+  --input-text-color: var(--text-color);
+
 }
 
 body {
@@ -684,28 +681,31 @@ body {
   color: var(--text-color);
 }
 
-.form-field label {
-  color: var(--text-color);
+section {
+  background: var(--card-bg);
+}
+
+h1, h2, h3 {
+  color: var(--heading-color);
+}
+
+nav ul {
+  background: var(--nav-bg);
+}
+
+nav a {
+  color: var(--nav-text);
+}
+
+.track {
+  background: var(--track-bg);
+}
+
+.track:hover {
+  background: var(--track-hover-bg);
 }
 
 input, textarea {
   background: var(--input-bg);
   color: var(--input-text-color);
-  border: 1px solid #ccc;
 }
-
-#theme-toggle {
-  border-radius: 999px;
-  padding: 0.4rem 0.8rem;
-  border: 1px solid var(--accent-color);
-}
-
-#contact-form section {
-  background: var(--card-bg);
-  padding: 1rem;
-  border-radius: 1rem;
-}
-
-
-
-
