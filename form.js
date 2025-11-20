@@ -89,7 +89,9 @@ form.addEventListener("submit", (event) => {
 
     // CUSTOM UPPERCASE CHECK
     if (field.name === "name" && !/^[A-Z]/.test(field.value)) {
-      field.setCustomValidity("Name must begin with an uppercase letter.");
+      field.setCustomValidity(
+        "Name must begin with an uppercase letter."
+      );
     } 
 
     // check validity
@@ -98,6 +100,14 @@ form.addEventListener("submit", (event) => {
     if (!field.checkValidity()) {
       hasErrors = true;
 
+       // fallback custom messages
+      if (!field.validationMessage) {
+        if (v.valueMissing) {
+          field.setCustomValidity(`${field.name} is required.`);
+        } else if (v.tooShort) {
+          field.setCustomValidity(`${field.name} is too short.`);
+        }
+      }
       thisAttemptErrors.push({
         field: field.name,
         value: field.value,
