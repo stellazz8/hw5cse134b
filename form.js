@@ -1,4 +1,6 @@
 const form = document.querySelector("#contact-form");
+form.setAttribute("novalidate", true);
+
 const errorOutput = document.querySelector("#error-output");
 const infoOutput = document.querySelector("#info-output");
 const textarea = document.querySelector("#comments");
