@@ -700,9 +700,12 @@ input, textarea {
   border: 1px solid var(--accent-color);
 }
 
-section.form-field {
+#contact-form section {
   background: var(--card-bg);
+  padding: 1rem;
+  border-radius: 1rem;
 }
+
 
 
 
