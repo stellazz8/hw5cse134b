@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact – No JS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="form-page">
+    <h1>Contact Stella</h1>
+
+    <form
+      id="contact-form"
+      action="https://httpbin.org/post"
+      method="POST"
+      novalidate
+    >
+      <!-- Hidden anti-bot field -->
+      <input type="hidden" name="possible_bot" value="true">
+      <input type="hidden" id="form-errors" name="form-errors" value="[]">
+
+
+      <!-- Name -->
+      <section class="form-field">
+        <label for="name">Name <span aria-hidden="true">*</span></label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          required
+          minlength="2"
+          maxlength="50"
+          pattern="[A-Za-z\\s'-]+"
+        >
+      </section>
+
+      <!-- Email -->
+      <section class="form-field">
+        <label for="email">Email <span aria-hidden="true">*</span></label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          required
+          maxlength="100"
+        >
+      </section>
+
+      <!-- Subject -->
+      <section class="form-field">
+        <label for="subject">Subject</label>
+        <input
+          id="subject"
+          name="subject"
+          type="text"
+          minlength="3"
+          maxlength="80"
+        >
+      </section>
+
+      <!-- Comments (textarea required) -->
+      <section class="form-field">
+        <label for="comments">Comments <span aria-hidden="true">*</span></label>
+        <textarea
+          id="comments"
+          name="comments"
+          required
+          minlength="10"
+          maxlength="200"
+          rows="5"
+        ></textarea>
+      </section>
+
+      <!-- Output areas required in spec -->
+      <section class="form-messages">
+        <output id="error-output" class="form-error" aria-live="assertive"></output>
+        <output id="info-output" class="form-info" aria-live="polite"></output>
+      </section>
+
+      <button type="submit">Send message</button>
+    </form>
+    
+  </main>
+
+  <script src="form.js" defer></script>
+  
+</body>
+</html>
+

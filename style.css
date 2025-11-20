@@ -640,6 +640,26 @@ textarea:valid {
 input:placeholder-shown,
 textarea:placeholder-shown {
   background: #fafafa;
+
+}
+
+/* added part3 */
+input.flash {
+  animation: flash 0.2s alternate 3;
+}
+
+@keyframes flash {
+  from { background: #ffecec; }
+  to   { background: #ffffff; }
+}
+
+.form-info.warning {
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.form-info.error {
+  color: #b00020;
 }
 
 
