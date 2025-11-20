@@ -117,6 +117,7 @@ form.addEventListener("submit", (event) => {
       });
 
       field.reportValidity();
+      showError("Please fix the highlighted fields before submitting.");
       event.preventDefault();
       break;
     }
