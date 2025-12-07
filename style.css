@@ -715,4 +715,17 @@ input, textarea {
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.5rem;
   margin-top: 1.5rem;
+  max-width: 1100px;
+  margin-inline: auto;
+}
+
+.about-projects {
+  grid-column: 1 / -1; 
+}
+
+.about-projects {
+  grid-column: 1 / -1;
+  background: transparent;
+  box-shadow: none;
+  padding-inline: 0;  
 }
