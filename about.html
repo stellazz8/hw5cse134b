@@ -8,6 +8,9 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
+
+
+
 <body>
   <header>
     <h1>About Me</h1>
@@ -69,6 +72,61 @@
       </section>
     </article>
 
+    <section aria-labelledby="project-highlights-heading">
+      <h2 id="project-highlights-heading">💼 Project Highlights</h2>
+      <p>
+        Here are a few projects and performances that reflect my work across music, 
+        performance, and creative coding.
+      </p>
+
+      <div class="project-grid">
+        <project-card
+          title="CSE 134B Music Portfolio"
+          image="IMG_9530.jpg"
+          image-alt="Cover-style artwork used on my music portfolio site"
+          description="A responsive, multi-page portfolio built with semantic HTML, CSS grid, flexbox, and progressive enhancement for forms and theme switching."
+          link="index.html"
+          link-text="Visit the portfolio homepage"
+          date="2025"
+          tags="Web Design · Accessibility · Front-end"
+        ></project-card>
+
+        <project-card
+          title="Chicago – Vocal Performance"
+          image="IMG_4409.JPG"
+          image-alt="Stella singing live in the school show Chicago"
+          description="Live vocal performance in the high school production of Chicago, focusing on character interpretation, vocal control, and stage presence."
+          link="gallery.html"
+          link-text="See performance photos"
+          date="2024"
+          tags="Vocals · Musical Theatre · Live Performance"
+        ></project-card>
+
+        <project-card
+          title="HPHS Christmas Concert"
+          image="IMG_6042.JPG"
+          image-alt="Stella performing violin at the HPHS Christmas concert"
+          description="Violin performance at HPHS Philharmonic Orchestra’s Christmas concert, blending classical repertoire with expressive phrasing."
+          link="music.html"
+          link-text="Listen to related recordings"
+          date="2023"
+          tags="Violin · Orchestra · Live Recording"
+        ></project-card>
+
+        <project-card
+          title="Contact & Feedback System"
+          image="IMG_9530.jpg"
+          image-alt="Stylized interface representing the contact form system"
+          description="A progressively-enhanced contact form with HTML validation, custom JavaScript error handling, and localStorage-backed theme toggling."
+          link="form-with-js.html"
+          link-text="Try the interactive form"
+          date="2025"
+          tags="Forms · Validation · JavaScript"
+        ></project-card>
+      </div>
+    </section>
+
+
     <section>
       <h2>🌈 Vision</h2>
       <p>
@@ -86,5 +144,10 @@
   <noscript>
     <p>This page works without JavaScript. For animations or interactivity, please enable JS later.</p>
   </noscript>
+
+  <script src="project-card.js" type="module" defer></script>
+</body>
+</html>
+
 </body>
 </html>
