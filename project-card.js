@@ -110,6 +110,7 @@ const LOCAL_STORAGE_KEY = "stella-projects-local";
 
 const defaultLocalProjects = [
   {
+    id: 1,
     title: "CSE 134B Music Portfolio",
     image: "IMG_9530.jpg",
     imageAlt: "Cover-style artwork used on my music portfolio site",
@@ -121,6 +122,7 @@ const defaultLocalProjects = [
     tags: "Web Design · Front-end · Accessibility"
   },
   {
+    id: 2,
     title: "HPHS Christmas Concert",
     image: "IMG_6042.JPG",
     imageAlt: "Stella performing violin at the HPHS Christmas concert",
@@ -132,6 +134,7 @@ const defaultLocalProjects = [
     tags: "Violin · Orchestra · Live Recording"
   },
   {
+    id: 3,
     title: "Chicago – Vocal Performance",
     image: "IMG_4409.JPG",
     imageAlt: "Stella singing live in the school show Chicago",
@@ -143,6 +146,7 @@ const defaultLocalProjects = [
     tags: "Vocals · Musical Theatre"
   },
   {
+    id: 4,
     title: "Contact & Feedback System",
     image: "IMG_9530.jpg",
     imageAlt: "Stylized UI representing a contact form and validation",
@@ -154,6 +158,7 @@ const defaultLocalProjects = [
     tags: "Forms · JavaScript · UX"
   }
 ];
+
 
 const REMOTE_URL =
   "https://api.jsonbin.io/v3/b/6935f911d0ea881f40196747";
