@@ -869,3 +869,29 @@ input, textarea {
 .collection-page main > section:nth-of-type(3) {
   grid-column: 1 / -1;
 }
+
+
+.contact-page main {
+  display: flex;           
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.contact-page main > section {
+  max-width: 700px;
+  width: 100%;
+  background: var(--card-bg);
+  border-radius: 1.5rem;
+  border: 3px solid #3498db; 
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+  padding: 2.5rem 3rem;
+  text-align: center;
+}
+
+.contact-page main > section p {
+  margin-bottom: 0.75rem;
+}
+
+.contact-page main > section a {
+  font-weight: 600;
+}
