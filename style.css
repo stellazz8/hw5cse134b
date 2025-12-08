@@ -852,3 +852,20 @@ input, textarea {
 .gallery-page main > section:nth-of-type(3) {
   border-color: #a945ac; 
 }
+
+
+.collection-page main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.collection-page main > section:nth-of-type(1),
+.collection-page main > section:nth-of-type(2) {
+
+}
+
+.collection-page main > section:nth-of-type(3) {
+  grid-column: 1 / -1;
+}
