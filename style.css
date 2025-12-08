@@ -752,3 +752,62 @@ input, textarea {
   max-width: 1100px;
   margin-inline: auto;
 }
+
+.about-page main > article {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.about-page main > article > section {
+  background: var(--card-bg);
+  border-radius: 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+}
+
+.about-page main > article > section::before {
+  content: "";
+  display: block;
+  height: 4px;
+  width: 40%;
+  border-radius: 999px;
+  margin-bottom: 1rem;
+  background: color-mix(
+    in srgb,
+    var(--accent-color) 70%,
+    var(--primary-color)
+  );
+}
+
+.project-highlights-section {
+  grid-column: 1 / -1;       
+  max-width: 960px;
+  margin: 3rem auto 0;
+  text-align: center;
+}
+
+.project-highlights-section p {
+  max-width: 42rem;
+  margin: 0.75rem auto 0;
+}
+
+.project-controls {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center; 
+}
+
+#vision-section {
+  grid-column: 1 / -1;       
+  max-width: 960px;
+  margin: 3rem auto 0;
+}
+
+#vision-section p {
+  max-width: 48rem;        
+}
