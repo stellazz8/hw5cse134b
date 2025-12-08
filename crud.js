@@ -1,4 +1,4 @@
-const LOCAL_STORAGE_KEY = "stella-projects-local";
+const LOCAL_STORAGE_KEY = "$2a$10$byCSUqwlMDw6gnlXS4zfI.taJkFhxP6QW2dgZBN3dK4CdeIhxEyum";
 
 function getProjects() {
   const raw = localStorage.getItem(LOCAL_STORAGE_KEY);
