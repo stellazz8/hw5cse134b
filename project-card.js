@@ -1,3 +1,4 @@
+
 class ProjectCard extends HTMLElement {
   constructor() {
     super();
@@ -103,3 +104,137 @@ class ProjectCard extends HTMLElement {
 }
 
 customElements.define("project-card", ProjectCard);
+
+
+const LOCAL_STORAGE_KEY = "stella-projects-local";
+
+const defaultLocalProjects = [
+  {
+    title: "CSE 134B Music Portfolio",
+    image: "IMG_9530.jpg",
+    imageAlt: "Cover-style artwork used on my music portfolio site",
+    description:
+      "A responsive music portfolio site built with semantic HTML, CSS grid/flexbox, view transitions, and a localStorage-backed theme toggle.",
+    link: "index.html",
+    linkText: "Visit the portfolio homepage",
+    date: "2025",
+    tags: "Web Design · Front-end · Accessibility"
+  },
+  {
+    title: "HPHS Christmas Concert",
+    image: "IMG_6042.JPG",
+    imageAlt: "Stella performing violin at the HPHS Christmas concert",
+    description:
+      "Live orchestral performance focusing on dynamic phrasing, ensemble balance, and expressive violin tone.",
+    link: "music.html",
+    linkText: "Listen to recordings",
+    date: "2023",
+    tags: "Violin · Orchestra · Live Recording"
+  },
+  {
+    title: "Chicago – Vocal Performance",
+    image: "IMG_4409.JPG",
+    imageAlt: "Stella singing live in the school show Chicago",
+    description:
+      "Vocal feature in the school production of Chicago, working on character interpretation, breath support, and stage presence.",
+    link: "gallery.html",
+    linkText: "View performance photos",
+    date: "2024",
+    tags: "Vocals · Musical Theatre"
+  },
+  {
+    title: "Contact & Feedback System",
+    image: "IMG_9530.jpg",
+    imageAlt: "Stylized UI representing a contact form and validation",
+    description:
+      "Progressively enhanced contact form with HTML validation, custom JavaScript error handling, and server-side POST via httpbin.",
+    link: "form-with-js.html",
+    linkText: "Try the interactive form",
+    date: "2025",
+    tags: "Forms · JavaScript · UX"
+  }
+];
+
+const REMOTE_URL =
+  "https://api.jsonbin.io/v3/b/6935f911d0ea881f40196747";
+
+function saveLocalProjectsIfMissing() {
+  if (!localStorage.getItem(LOCAL_STORAGE_KEY)) {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(defaultLocalProjects));
+  }
+}
+
+function loadLocalProjects() {
+  saveLocalProjectsIfMissing();
+  try {
+    const raw = localStorage.getItem(LOCAL_STORAGE_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch (e) {
+    console.error("Error parsing local projects JSON:", e);
+    return [];
+  }
+}
+
+function renderCards(projects, container) {
+  container.innerHTML = "";
+
+  projects.forEach((p) => {
+    const card = document.createElement("project-card");
+
+    if (p.title) card.setAttribute("title", p.title);
+    if (p.image) card.setAttribute("image", p.image);
+    if (p.imageAlt || p.image_alt) {
+      card.setAttribute("image-alt", p.imageAlt || p.image_alt);
+    }
+    if (p.description) card.setAttribute("description", p.description);
+    if (p.link) card.setAttribute("link", p.link);
+
+    const linkText = p.linkText || p.link_text || "Learn more";
+    card.setAttribute("link-text", linkText);
+
+    if (p.date) card.setAttribute("date", p.date);
+    if (p.tags) card.setAttribute("tags", p.tags);
+
+    container.appendChild(card);
+  });
+}
+
+async function fetchRemoteProjects() {
+  const res = await fetch(REMOTE_URL);
+  if (!res.ok) {
+    throw new Error(`Network error: ${res.status}`);
+  }
+  const data = await res.json();
+
+  if (Array.isArray(data)) {
+    return data;
+  } else if (Array.isArray(data.projects)) {
+    return data.projects;
+  } else if (Array.isArray(data.record)) {
+    return data.record;
+  }
+  return [];
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const grid = document.querySelector(".project-grid");
+  const loadLocalBtn = document.querySelector("#load-local");
+  const loadRemoteBtn = document.querySelector("#load-remote");
+
+  if (!grid || !loadLocalBtn || !loadRemoteBtn) return;
+
+  loadLocalBtn.addEventListener("click", () => {
+    const projects = loadLocalProjects();
+    renderCards(projects, grid);
+  });
+
+  loadRemoteBtn.addEventListener("click", async () => {
+    try {
+      const projects = await fetchRemoteProjects();
+      renderCards(projects, grid);
+    } catch (err) {
+      console.error(err);
+      alert("Sorry, I couldn't load the remote project data yet.");
+    }
+  });
+});
