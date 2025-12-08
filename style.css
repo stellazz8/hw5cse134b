@@ -825,3 +825,30 @@ input, textarea {
 #vision-section p {
   max-width: 48rem;        
 }
+
+.gallery-page main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.gallery-page main > section {
+  background: var(--card-bg);
+  border-radius: 1.5rem;
+  border: 3px solid var(--accent-color);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+}
+
+.gallery-page main > section:nth-of-type(1) {
+  border-color: #3498db;  
+}
+
+.gallery-page main > section:nth-of-type(2) {
+  border-color: #e67e22; 
+}
+
+.gallery-page main > section:nth-of-type(3) {
+  border-color: #a945ac; 
+}
