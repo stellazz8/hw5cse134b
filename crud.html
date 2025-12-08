@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Project Manager | Stella Zhuang Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <h1>Manage Projects (CRUD)</h1>
+    <input type="checkbox" id="menu-toggle" hidden>
+    <label for="menu-toggle" class="hamburger" aria-label="Toggle navigation">☰</label>
+
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="music.html">Music</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="collection.html">Collection</a></li>
+        <li><a href="crud.html">Manage Projects</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>🛠 Local Project Editor (CRUD)</h2>
+      <p>
+        Use this form to <strong>create</strong>, <strong>update</strong>, or <strong>delete</strong>
+        projects stored in <code>localStorage</code>. These changes affect what appears when you
+        click <em>"Load Local"</em> on the About page.
+      </p>
+
+      <form id="crud-form" class="form-page-inner">
+        <section class="form-field">
+          <label for="project-id">
+            Project ID 
+            <span aria-hidden="true">(for update/delete)</span>
+          </label>
+          <input
+            id="project-id"
+            name="id"
+            type="number"
+            min="1"
+            placeholder="Leave blank to create a new project"
+          >
+        </section>
+
+        <section class="form-field">
+          <label for="project-title">Title</label>
+          <input
+            id="project-title"
+            name="title"
+            type="text"
+            required
+            minlength="3"
+            maxlength="80"
+          >
+        </section>
+
+        <section class="form-field">
+          <label for="project-image">Image URL</label>
+          <input
+            id="project-image"
+            name="image"
+            type="text"
+            placeholder="IMG_9530.jpg or https://example.com/image.jpg"
+          >
+        </section>
+
+        <section class="form-field">
+          <label for="project-image-alt">Image Alt Text</label>
+          <input
+            id="project-image-alt"
+            name="imageAlt"
+            type="text"
+            maxlength="120"
+          >
+        </section>
+
+        <section class="form-field">
+          <label for="project-description">Description</label>
+          <textarea
+            id="project-description"
+            name="description"
+            rows="4"
+            required
+            minlength="10"
+            maxlength="250"
+          ></textarea>
+        </section>
+
+        <section class="form-field">
+          <label for="project-link">Link URL</label>
+          <input
+            id="project-link"
+            name="link"
+            type="text"
+            placeholder="index.html, music.html, or full URL"
+          >
+        </section>
+
+        <section class="form-field">
+          <label for="project-date">Date/Year</label>
+          <input
+            id="project-date"
+            name="date"
+            type="text"
+            placeholder="2025"
+          >
+        </section>
+
+        <section class="form-field">
+          <label for="project-tags">Tags</label>
+          <input
+            id="project-tags"
+            name="tags"
+            type="text"
+            placeholder="e.g. Violin · Live Performance"
+          >
+        </section>
+
+        <section class="form-messages">
+          <output id="crud-info" class="form-info" aria-live="polite"></output>
+        </section>
+
+        <div class="project-controls">
+          <button type="button" id="create-btn">Create New Project</button>
+          <button type="button" id="update-btn">Update Existing Project</button>
+          <button type="button" id="delete-btn">Delete Project</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Stella Zhuang. <strong>All Rights Reserved.</strong></p>
+  </footer>
+
+  <script src="crud.js" defer></script>
+</body>
+</html>
